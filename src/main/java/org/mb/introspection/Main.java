@@ -47,7 +47,7 @@ public class Main {
        à toutes les classes dans la JVM ce qui peut être à l'origine de problèmes de sécurité.
          */
         System.setProperty("java.security.policy",
-                "file:C:\\Users\\bedril.moussakat\\IdeaProjects\\introspection/src/TestExecuterMethode.policy");// Permet l'access au modificateur privée
+                "/TestExecuterMethode.policy");// Permet l'access au modificateur privée
         System.setSecurityManager(new SecurityManager()); // L'access à l'invocation de methode privée meme si le method.setAccessible(true); est fait
 
         List<String> maList = new ArrayList<String>();
@@ -130,7 +130,6 @@ public class Main {
             System.out.println("Valeur de retour = " + retour);
 
         } catch (Exception ex) {
-            //  ex.printStackTrace();
             LOGGER.log(Level.SEVERE,ex.toString());
         }
         System.out.println("J'execute la fin ");
@@ -200,25 +199,6 @@ public class Main {
             ex.printStackTrace();
         }
 
-
-        // Covariance n'existe pas avec la genericité
-        List<Fruit> fruits = new ArrayList<>();
-        List<? extends Fruit> pommes = new ArrayList<Pomme>();
-
-        fruits.add(new Fruit("Red"));
-        fruits.add(new Fruit("Green"));
-        fruits.add(new Pomme("Yellow"));
-        displayFruit(fruits);
-
-        String monstring ="/admin-portal/api/{resource:.+}/{id:.+}";
-        String api= "api/";
-        String resource =monstring.substring(monstring.indexOf(api)+api.length());
-        if(!resource.contains("/"))  System.out.println(resource + " 1");
-        resource= resource.substring(0,resource.lastIndexOf("/"));
-        System.out.println(resource + " 2");
-
-        //String monstring2= monstring.substring(monstring.indexOf("api/")+4,monstring.lastIndexOf("/")!=-1?monstring.lastIndexOf("/"):monstring.length()-1);
-      //  System.out.println(monstring2);
 
 
     }
